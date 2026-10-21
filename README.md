@@ -4,6 +4,8 @@ Noise detection and pairwise noise-interaction analysis for retrieval-augmented 
 
 The current milestone builds a documented eight-class question–passage dataset from the released NoiserBench files. It does not train a detector and it does not modify the NoiserBench repository.
 
+For a plain explanation of every file, and the commands to recreate the outputs yourself, read `docs/FILE_GUIDE.md`.
+
 ## Show the NoiserBench issues
 
 `docs/noiserbench_issues.md` is the note for the course report. Regenerate it with:

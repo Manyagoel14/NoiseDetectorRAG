@@ -132,6 +132,10 @@ Result: Ran 9 tests, OK. These tests use synthetic rows. They do not replace the
 - 2WikiMultihopQA has 6 duplicate normalized questions. It is not in the derived split.
 - Title and passage overlap across splits is real and unresolved.
 
+## File guide
+
+`docs/FILE_GUIDE.md` explains every output file in plain language and lists a separate command for each step. The step scripts are `download_noiserbench.py`, `audit_noiserbench.py`, `inspect_dataset.py`, `build_classification_set.py`, `analyze_class_distribution.py`, and `validate_dataset.py`.
+
 ## Next decision
 
 Approve whether to keep this question-level split or regroup questions that share a Wikipedia title before any training.

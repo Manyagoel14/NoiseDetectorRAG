@@ -111,18 +111,28 @@ def _test_shortfall(class_counts: dict[str, int], minimum: int, labels: list[str
     return {label: class_counts[label] for label in labels if class_counts[label] < minimum}
 
 
-def run_pipeline(root: Path, config: dict[str, Any]) -> dict[str, Any]:
-    raw_dir = root / config["raw_dirname"]
-    report_dir = root / "outputs" / "dataset_reports"
-    plot_dir = root / "outputs" / "plots"
-    processed_dir = root / "data" / "processed"
-    report_dir.mkdir(parents=True, exist_ok=True)
-    plot_dir.mkdir(parents=True, exist_ok=True)
-    processed_dir.mkdir(parents=True, exist_ok=True)
+def report_dir_for(root: Path) -> Path:
+    path = root / "outputs" / "dataset_reports"
+    path.mkdir(parents=True, exist_ok=True)
+    return path
 
+
+def write_inspection(root: Path, config: dict[str, Any]) -> dict[str, Any]:
+    """Count the raw JSON files. Does not delete or rewrite them."""
+    raw_dir = root / config["raw_dirname"]
+    report_dir = report_dir_for(root)
     inspection = inspect_directory(raw_dir)
     _write_json(report_dir / "raw_inspection.json", inspection)
     (report_dir / "raw_inspection.md").write_text(render_inspection_markdown(inspection), encoding="utf-8")
+    return inspection
+
+
+def build_classification(root: Path, config: dict[str, Any]) -> dict[str, Any]:
+    """Turn the raw files into labelled pairs, then assign the question split."""
+    raw_dir = root / config["raw_dirname"]
+    report_dir = report_dir_for(root)
+    processed_dir = root / "data" / "processed"
+    processed_dir.mkdir(parents=True, exist_ok=True)
 
     commit = config["noiserbench_commit"]
     ratio = str(config["orthographic_ratio"])
@@ -176,9 +186,7 @@ def run_pipeline(root: Path, config: dict[str, Any]) -> dict[str, Any]:
         writer.writeheader()
         writer.writerows(built["exclusions"])
 
-    cleaned_lengths: dict[str, list[int]] = {label: [] for label in LABELS}
-    for pair in built["pairs"]:
-        cleaned_lengths[pair["label"]].append(len(pair["passage_text"]))
+    _write_json(report_dir / "candidate_lengths.json", built["candidate_lengths"])
 
     decision = {
         "sources_used": sources,
@@ -217,33 +225,57 @@ def run_pipeline(root: Path, config: dict[str, Any]) -> dict[str, Any]:
     _write_json(report_dir / "dataset_decision.json", decision)
     _write_json(report_dir / "leakage_report.json", validation)
     _write_json(report_dir / "qc_report.json", qc)
+    return decision
+
+
+def write_plots(root: Path) -> list[str]:
+    """Draw the class and length charts from the files the build step saved."""
+    from rag_noise.data.build_set import read_jsonl
+
+    report_dir = report_dir_for(root)
+    plot_dir = root / "outputs" / "plots"
+    plot_dir.mkdir(parents=True, exist_ok=True)
+    decision_path = report_dir / "dataset_decision.json"
+    lengths_path = report_dir / "candidate_lengths.json"
+    pairs_path = root / "data" / "processed" / "classification.jsonl"
+    for path in (decision_path, lengths_path, pairs_path):
+        if not path.exists():
+            raise FileNotFoundError(
+                f"Missing {path}. Run scripts/build_classification_set.py before making plots."
+            )
+    decision = json.loads(decision_path.read_text(encoding="utf-8"))
+    candidate_lengths = json.loads(lengths_path.read_text(encoding="utf-8"))
+    pairs = read_jsonl(pairs_path)
+    cleaned_lengths: dict[str, list[int]] = {label: [] for label in LABELS}
+    for pair in pairs:
+        cleaned_lengths[pair["label"]].append(len(pair["passage_text"]))
 
     bar_counts(
-        built["inventory_counts"],
+        decision["inventory_counts"],
         "Stored NoiserBench variants before any selection",
         "Stored passages",
         plot_dir / "class_counts_inventory.png",
     )
     bar_counts(
-        built["candidate_counts"],
+        decision["candidate_counts"],
         "One candidate per parent before eligibility filters",
         "Parent questions",
         plot_dir / "class_counts_raw.png",
     )
     bar_counts(
-        built["cleaned_counts"],
+        decision["cleaned_counts"],
         "Cleaned one-pair-per-class dataset",
         "Pairs",
         plot_dir / "class_counts_cleaned.png",
     )
     proportion_bars(
-        built["cleaned_counts"],
+        decision["cleaned_counts"],
         "Class proportions in the cleaned dataset",
         plot_dir / "class_proportions_cleaned.png",
     )
-    grouped_split_bars(split_info["class_counts"], plot_dir / "class_counts_by_split.png")
+    grouped_split_bars(decision["split"]["class_counts"], plot_dir / "class_counts_by_split.png")
     length_boxes(
-        built["candidate_lengths"],
+        candidate_lengths,
         "Candidate passage length before eligibility filters",
         plot_dir / "length_by_class_raw.png",
     )
@@ -252,7 +284,7 @@ def run_pipeline(root: Path, config: dict[str, Any]) -> dict[str, Any]:
         "Cleaned passage length by class",
         plot_dir / "length_by_class_cleaned.png",
     )
-    decision["plot_paths"] = [
+    plot_paths = [
         "outputs/plots/class_counts_inventory.png",
         "outputs/plots/class_counts_raw.png",
         "outputs/plots/class_counts_cleaned.png",
@@ -261,5 +293,13 @@ def run_pipeline(root: Path, config: dict[str, Any]) -> dict[str, Any]:
         "outputs/plots/length_by_class_raw.png",
         "outputs/plots/length_by_class_cleaned.png",
     ]
+    decision["plot_paths"] = plot_paths
     _write_json(report_dir / "dataset_decision.json", decision)
+    return plot_paths
+
+
+def run_pipeline(root: Path, config: dict[str, Any]) -> dict[str, Any]:
+    write_inspection(root, config)
+    decision = build_classification(root, config)
+    write_plots(root)
     return decision
