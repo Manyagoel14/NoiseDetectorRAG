@@ -1,0 +1,225 @@
+{
+  "noiserbench_commit": "447bee38d91996615ecc85c4da4a5b204f6c9837",
+  "repo": "/tmp/NoiserBench-inspect",
+  "data": "data/raw/noiserbench",
+  "findings": [
+    {
+      "issue_id": "NB-01",
+      "title": "The repository has no Python dependency manifest",
+      "status": "CONFIRMED",
+      "evidence": [
+        "Looked for ['requirements.txt', 'pyproject.toml', 'environment.yml', 'setup.py']. Found: none."
+      ],
+      "impact": "A fresh environment cannot be recreated from the repository alone."
+    },
+    {
+      "issue_id": "NB-02",
+      "title": "README links the paper and dataset but does not document how to run the code",
+      "status": "CONFIRMED",
+      "evidence": [
+        "README.md contains the dataset and paper links.",
+        "Usage-like tokens present: False."
+      ],
+      "impact": "Reproducing an experiment requires reading the Python files directly."
+    },
+    {
+      "issue_id": "NB-03",
+      "title": "DATA_PATH lists only Natural Questions and points at a directory that is not in the tree",
+      "status": "CONFIRMED",
+      "evidence": [
+        "config.py:2: \"nq\": \"../data/single_hop/nq.json\",   # Input your data path here",
+        "Config file text: DATA_PATH = {\n    \"nq\": \"../data/single_hop/nq.json\",   # Input your data path here\n}"
+      ],
+      "impact": "The loader cannot find the released files without an external path edit. The files live under data/single-hop, with a hyphen."
+    },
+    {
+      "issue_id": "NB-04",
+      "title": "The loader names datasets that have no entry in DATA_PATH, including GSM8K",
+      "status": "CONFIRMED",
+      "evidence": [
+        "data_loader.py:15: elif dataset_name in [\"gsm8k\", \"gsm8k_hard\"]:",
+        "Dataset names mentioned in the loader: ['nq', 'rgb', 'hotpotqa', '2wikimqa', 'bamboogle', 'tempqa', 'priorqa', 'strategyqa', 'gsm8k', 'gsm8k_hard'].",
+        "JSON files visible in this checkout's data/ directory: none.",
+        "A sparse checkout can omit data/. The release that we downloaded separately has eight JSON files and no gsm8k file."
+      ],
+      "impact": "GSM8K is referenced in code and is not one of the eight released NoiserBench JSON files."
+    },
+    {
+      "issue_id": "NB-05",
+      "title": "Supportive-noise retrieval imports utils.normalize_answers, but the file is normalize_answer.py",
+      "status": "CONFIRMED",
+      "evidence": [
+        "passage_retrieval.py:34: from utils.normalize_answers import is_answer_in_text",
+        "utils/normalize_answer.py exists: True.",
+        "utils/normalize_answers.py exists: False."
+      ],
+      "impact": "The supportive and semantic retrieval script raises ImportError as committed, before it can build passages."
+    },
+    {
+      "issue_id": "NB-06",
+      "title": "The retrieval script stores semantic_text and supportive_text, while the released JSON uses different field names",
+      "status": "CONFIRMED",
+      "evidence": [
+        "passage_retrieval.py:263: item['supportive_text'], item['semantic_text'] = [], []",
+        "passage_retrieval.py:263: item['supportive_text'], item['semantic_text'] = [], []"
+      ],
+      "impact": "Even after the import is repaired, this script's output names do not match the released schema. It cannot be treated as a drop-in reader of the JSON files."
+    },
+    {
+      "issue_id": "NB-07",
+      "title": "Semantic filtering uses a cosine threshold of 0.20 that the main paper text does not state",
+      "status": "CONFIRMED",
+      "evidence": [
+        "passage_retrieval.py:279: while (sentence_model.encode(question, normalize_embeddings=True)*sentence_model.encode(q_semantic, normalize_embeddings=True)).sum() >= 0.20:"
+      ],
+      "impact": "The threshold is an implementation detail of this file. The paper names all-MiniLM-L6-v2 and Contriever but, in the sections we read, does not give 0.20."
+    },
+    {
+      "issue_id": "NB-08",
+      "title": "textnoisr is not vendored, even though the paper uses it for orthographic noise",
+      "status": "CONFIRMED",
+      "evidence": [
+        "Files mentioning textnoisr: none."
+      ],
+      "impact": "Orthographic corruption cannot be rerun from this repository. The released ratios are data, not a generator."
+    },
+    {
+      "issue_id": "NB-09",
+      "title": "No generator is present for datatype, illegal-sentence, counterfactual, orthographic, or prior noise",
+      "status": "CONFIRMED",
+      "evidence": [
+        "Searched data_loader.py and passage_retrieval.py for generator clues.",
+        "{'illegal sentence': False, 'datatype noise': False, 'ChatGPT': False, 'textnoisr': False}",
+        "passage_retrieval.py builds only supportive and semantic candidates, and it does not run as committed."
+      ],
+      "impact": "Those five classes can be reused from the released JSON. They cannot be regenerated from this code without writing a new generator and marking it as ours."
+    },
+    {
+      "issue_id": "NB-10",
+      "title": "The evaluation loader reads golden text and one counterfactual passage, not the other noise fields",
+      "status": "CONFIRMED",
+      "evidence": [
+        "data_loader.py:53: retrieval_results = [{\"id\": 0, \"title\": \"\", \"text\": item[\"gold_text\"]}]",
+        "data_loader.py:63: retrieval_results = [{\"id\": 0, \"title\": \"\", \"text\": item[\"counterfactual_noise\"]}]"
+      ],
+      "impact": "The shipped loader is a multiple-choice prompt builder. It is not an eight-class dataset builder."
+    },
+    {
+      "issue_id": "NB-11",
+      "title": "The data directory has no train, validation, or test split",
+      "status": "CONFIRMED",
+      "evidence": [
+        "Split directories under data/: none."
+      ],
+      "impact": "Any detector split has to be created by us. The paper instead samples up to 500 test cases per dataset."
+    },
+    {
+      "issue_id": "NB-12",
+      "title": "The vendored PAL project is not imported by the noise-benchmark code",
+      "status": "CONFIRMED",
+      "evidence": [
+        "Imports of pal outside pal/: none."
+      ],
+      "impact": "PAL is extra code in the tree. It is not part of the seven-noise implementation."
+    },
+    {
+      "issue_id": "NB-13",
+      "title": "Retrieval code hard-codes CUDA devices and a local MiniLM directory",
+      "status": "CONFIRMED",
+      "evidence": [
+        "passage_retrieval.py:37: os.environ['CUDA_VISIBLE_DEVICES'] = '0,1,2,3'",
+        "passage_retrieval.py:40: sentence_model = SentenceTransformer(\"./all-MiniLM-L6-v2\", device=\"cuda:0\")"
+      ],
+      "impact": "Running the original retriever needs a GPU, a local embedding model, a Wikipedia passage file, and a Contriever index. None of those artifacts are in the repository."
+    },
+    {
+      "issue_id": "NB-14",
+      "title": "All eight released JSON files can be loaded as arrays",
+      "status": "CONFIRMED",
+      "evidence": [
+        "Loaded 8 files.",
+        "Missing: none.",
+        "Record counts: nq=807, rgb=300, hotpotqa=500, 2wikimqa=500, bamboogle=125, strategyqa=500, tempqa=186, priorqa=500"
+      ],
+      "impact": "These counts are the benchmark release, not the official full HotpotQA training set of 90,447."
+    },
+    {
+      "issue_id": "NB-15",
+      "title": "Released records do not carry an eight-class label",
+      "status": "CONFIRMED",
+      "evidence": [
+        "Checked the first 20 records of each loaded file for label and noise_label.",
+        "HotpotQA keys: counterfactual answer, counterfactual answer2, counterfactual noise, counterfactual noise2, datatype noise, gold_answers, gold_text, id, illegal sentence noise, orthographic noise, question, semantic noise, supportive noise"
+      ],
+      "impact": "A classification row is created only when our code chooses one field and assigns the class. That label is derived, not original."
+    },
+    {
+      "issue_id": "NB-16",
+      "title": "Each HotpotQA record stores several noise fields at once",
+      "status": "CONFIRMED",
+      "evidence": [
+        "Required fields present: ['counterfactual noise', 'datatype noise', 'gold_text', 'illegal sentence noise', 'orthographic noise', 'semantic noise', 'supportive noise']."
+      ],
+      "impact": "Exploding every stored passage would make list-valued classes about ten times larger than Relevant. The derived dataset keeps one passage per class."
+    },
+    {
+      "issue_id": "NB-17",
+      "title": "PriorQA does not contain the passage-noise fields used by the other files",
+      "status": "CONFIRMED",
+      "evidence": [
+        "PriorQA keys: ['background', 'counterfactual answer', 'counterfactual answer2', 'counterfactual noise', 'counterfactual noise2', 'gold_answers', 'gold_text', 'id', 'keywords', 'question'].",
+        "Passage-noise fields absent from the first record: ['datatype noise', 'illegal sentence noise', 'orthographic noise', 'semantic noise', 'supportive noise']."
+      ],
+      "impact": "Prior noise is a false premise in the question. The corrective text is gold_text. PriorQA counterfactual passages are a second noise type on the same question, so the derived set does not emit them."
+    },
+    {
+      "issue_id": "NB-18",
+      "title": "StrategyQA answers are booleans, and the second counterfactual field is absent",
+      "status": "CONFIRMED",
+      "evidence": [
+        "gold_answers element types: {'bool': 500}.",
+        "Records without counterfactual answer2: 500 of 500."
+      ],
+      "impact": "Answer-containment checks must treat true and false as words. They must not assume every file has two counterfactual strings."
+    },
+    {
+      "issue_id": "NB-19",
+      "title": "Orthographic noise is stored at ten corruption ratios, not as one class",
+      "status": "CONFIRMED",
+      "evidence": [
+        "HotpotQA orthographic key sets: {\"('0.01', '0.05', '0.1', '0.2', '0.3', '0.4', '0.5', '0.6', '0.7', '0.8')\": 500}."
+      ],
+      "impact": "The derived Orthographic class uses ratio 0.2. Ratio 0.01 is almost clean, and 0.8 is close to illegible text."
+    },
+    {
+      "issue_id": "NB-20",
+      "title": "Record ids are local integers starting at 0, not official HotpotQA ids",
+      "status": "CONFIRMED",
+      "evidence": [
+        "ids == 0..n-1 for each file: {'nq': True, 'rgb': True, 'hotpotqa': True, '2wikimqa': True, 'bamboogle': True, 'strategyqa': True, 'tempqa': True, 'priorqa': True}."
+      ],
+      "impact": "The release cannot be aligned to the official HotpotQA train, validation, and test ids without matching question strings."
+    },
+    {
+      "issue_id": "NB-21",
+      "title": "Released illegal-sentence strings are short fragments; the paper's whole-word example was not found",
+      "status": "CONFIRMED",
+      "evidence": [
+        "HotpotQA illegal fragments inspected: 5000.",
+        "Fragments equal to the paper example 'history transform cover managed that hand black': 0.",
+        "Share of whitespace tokens that are alphabetic and at least 4 characters: 0.6859.",
+        "First fragment: 'riors ip ious ml illo chr five ill orden chester ographic ter fluss throw worth frica schule ikel quent uma foo aria open anced jel weet issions mers stack engers.'"
+      ],
+      "impact": "The paper describes sampling words from a model vocabulary. The repository has no such generator, and the stored strings are not that paper example. We use the stored strings and do not call them a verified rerun of the paper's generator."
+    },
+    {
+      "issue_id": "NB-22",
+      "title": "Datatype noise usually mixes prose with a URL or code, but the cue is not present in every HotpotQA string",
+      "status": "CONFIRMED",
+      "evidence": [
+        "HotpotQA datatype strings with a URL or code cue (http, def, public class, or print): 409 of 500."
+      ],
+      "impact": "Where the cue is present, the passage still contains the original answer, so stripping URLs or code would make it look like Relevant. The 91 strings without that cue need manual inspection before anyone claims every datatype example matches the paper's text-plus-URL-or-code rule."
+    }
+  ]
+}

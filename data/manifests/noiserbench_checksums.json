@@ -1,0 +1,53 @@
+{
+  "noiserbench_commit": "447bee38d91996615ecc85c4da4a5b204f6c9837",
+  "files": [
+    {
+      "source": "nq",
+      "path": "data/raw/noiserbench/single-hop/nq.json",
+      "bytes": 20855221,
+      "sha256": "beaf1035addd37880ebd88e4c56262730145a8bde546689adc12f27cbb574249"
+    },
+    {
+      "source": "rgb",
+      "path": "data/raw/noiserbench/single-hop/rgb.json",
+      "bytes": 5288868,
+      "sha256": "1ca4ffff85576b9a14dc58d2a6761d152ec6def6e4e0ce10d86bab0c07cec77c"
+    },
+    {
+      "source": "hotpotqa",
+      "path": "data/raw/noiserbench/multi-hop/explicit/hotpotqa.json",
+      "bytes": 14598220,
+      "sha256": "e70e0135a2c706b98f2363f4c0eef5e6a0251b3f9935363c97a02e8f1c525187"
+    },
+    {
+      "source": "2wikimqa",
+      "path": "data/raw/noiserbench/multi-hop/explicit/2wikimqa.json",
+      "bytes": 11350201,
+      "sha256": "411688871b68f5f7e773866ededa235fd0a717b6ca2244ccf5e10b76d55904fa"
+    },
+    {
+      "source": "bamboogle",
+      "path": "data/raw/noiserbench/multi-hop/explicit/bamboogle.json",
+      "bytes": 2653413,
+      "sha256": "d7c5f866ad91d8c925c63815fc4558b742993142836143b70542bb25784daa15"
+    },
+    {
+      "source": "strategyqa",
+      "path": "data/raw/noiserbench/multi-hop/implicit/strategyqa.json",
+      "bytes": 10422576,
+      "sha256": "1cb31c8f02bd512f4fabcb73a495f07b6aaa720560bc879e4ad7a3194b1a51bb"
+    },
+    {
+      "source": "tempqa",
+      "path": "data/raw/noiserbench/multi-hop/implicit/tempqa.json",
+      "bytes": 4103578,
+      "sha256": "fcf4ac95bc51d5ae9c6457b3671e161edbb488c7ce768613eef6822420794c0b"
+    },
+    {
+      "source": "priorqa",
+      "path": "data/raw/noiserbench/mix-hop/priorqa.json",
+      "bytes": 1952929,
+      "sha256": "c615641cfc613f6a48627fc5fd88796ae7f583e97a148a1af6e04902377bdde8"
+    }
+  ]
+}

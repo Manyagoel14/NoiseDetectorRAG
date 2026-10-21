@@ -1,0 +1,22 @@
+{
+  "relevant_pairs_without_gold_answer_string": 0,
+  "supportive_pairs_that_still_contain_gold_answer": 0,
+  "prior_pairs": 500,
+  "prior_pairs_whose_gold_answer_is_not_the_expected_phrase": 0,
+  "orthographic_similarity_to_gold": {
+    "count": 500,
+    "min": 0.014,
+    "max": 0.9939,
+    "mean": 0.5307,
+    "median": 0.551
+  },
+  "illegal_sentence_whitespace_tokens": {
+    "count": 500,
+    "min": 30,
+    "max": 30,
+    "mean": 30.0,
+    "median": 30.0
+  },
+  "n_parents_with_identical_text_under_two_labels": 0,
+  "identical_text_collisions_preview": []
+}
