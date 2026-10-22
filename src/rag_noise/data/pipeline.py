@@ -276,12 +276,12 @@ def write_plots(root: Path) -> list[str]:
     grouped_split_bars(decision["split"]["class_counts"], plot_dir / "class_counts_by_split.png")
     length_boxes(
         candidate_lengths,
-        "Candidate passage length before eligibility filters",
+        "Length of the one HotpotQA or PriorQA passage considered before filters",
         plot_dir / "length_by_class_raw.png",
     )
     length_boxes(
         cleaned_lengths,
-        "Cleaned passage length by class",
+        "Length of the one passage kept in the final dataset",
         plot_dir / "length_by_class_cleaned.png",
     )
     plot_paths = [

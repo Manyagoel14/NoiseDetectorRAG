@@ -93,7 +93,15 @@ You get these pictures in `outputs/plots/`:
 - `class_counts_cleaned.png` — the final dataset, one example per class per question.
 - `class_proportions_cleaned.png` — the same final counts shown as shares of the whole dataset.
 - `class_counts_by_split.png` — train, validation, and test side by side.
-- `length_by_class_raw.png` and `length_by_class_cleaned.png` — how long the passages are in each class.
+- `length_by_class_raw.png` and `length_by_class_cleaned.png` — how long the one chosen passage is. These two pictures look almost the same. The reason is below.
+
+## Why the raw and cleaned length charts look the same
+
+`length_by_class_raw.png` does not show every passage in the original file. It shows the length of the single passage the script was about to keep, measured before a small filter. `length_by_class_cleaned.png` shows the length of the passage that was actually kept.
+
+For six of the seven HotpotQA classes, that passage is the same text. The filter only applies to supportive noise: it skips a passage when the answer is already in it. On this file that happened for 4 questions out of 500. The chart also hides extreme dots. Four swaps out of 500 are not visible in a box plot, so the two pictures look the same.
+
+The original file still has about ten semantic, supportive, illegal-sentence, and spelling-damaged passages per question. Those extra passages are what the next plot step draws.
 
 ### Step 6. Check the split again
 
@@ -103,13 +111,28 @@ python scripts/validate_dataset.py
 
 This reads `data/processed/classification.jsonl` and writes `outputs/dataset_reports/leakage_report.json` again. If the same question is in two splits, the script stops with an error.
 
+### Step 7. Plot the original HotpotQA and PriorQA files
+
+```bash
+python scripts/plot_original_datasets.py
+```
+
+Run this after step 4. It reads the original JSON files and the labelled dataset. It draws:
+
+- `outputs/plots/original/hotpotqa_stored_counts.png` — how many passages of each kind are stored in the original HotpotQA file.
+- `outputs/plots/original/hotpotqa_stored_vs_kept_counts.png` — those original counts next to the one passage we kept.
+- `outputs/plots/original/hotpotqa_stored_vs_kept_lengths.png` — length of every stored passage next to the length of the one we kept.
+- `outputs/plots/original/hotpotqa_orthographic_ratio_counts.png` and `hotpotqa_orthographic_ratio_lengths.png` — the ten spelling-damage levels.
+- `outputs/plots/original/priorqa_stored_counts.png` and `priorqa_field_lengths.png` — the PriorQA text we kept, and the counterfactual and background text we left out.
+- `outputs/dataset_reports/original_vs_kept.json` — the counts used in those charts.
+
 ### Optional. Run the small tests
 
 ```bash
 python -m unittest tests.test_dataset tests.test_audit_fixture
 ```
 
-These tests use tiny made-up examples. They check that the rules behave as written. They do not replace steps 1 to 6.
+These tests use tiny made-up examples. They check that the rules behave as written. They do not replace steps 1 to 7.
 
 There is also `python scripts/run_dataset_pipeline.py`. That one command runs steps 3, 4, and 5 together. Use the separate scripts when you want to look at each result before continuing.
 

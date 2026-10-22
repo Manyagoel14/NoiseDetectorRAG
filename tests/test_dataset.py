@@ -92,6 +92,18 @@ class BuildTests(unittest.TestCase):
         self.assertEqual(reasons, ["empty_passage"])
 
 
+    def test_hotpot_collector_keeps_every_stored_passage(self) -> None:
+        from rag_noise.data.original_plots import hotpot_stored_lengths
+
+        record = hotpot_record()
+        record["semantic noise"].append({"id": 2, "title": "More", "text": "Another unrelated boat passage."})
+        lengths = hotpot_stored_lengths([record])
+        self.assertEqual(len(lengths["Semantic Noise"]), 2)
+        self.assertEqual(len(lengths["Counterfactual Noise"]), 2)
+        self.assertEqual(len(lengths["Orthographic Noise"]), 2)
+        self.assertEqual(lengths["Relevant"], [len(record["gold_text"])])
+
+
 class SplitTests(unittest.TestCase):
     def test_duplicate_questions_stay_together(self) -> None:
         pairs = []

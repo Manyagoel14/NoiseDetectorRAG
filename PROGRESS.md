@@ -134,7 +134,9 @@ Result: Ran 9 tests, OK. These tests use synthetic rows. They do not replace the
 
 ## File guide
 
-`docs/FILE_GUIDE.md` explains every output file in plain language and lists a separate command for each step. The step scripts are `download_noiserbench.py`, `audit_noiserbench.py`, `inspect_dataset.py`, `build_classification_set.py`, `analyze_class_distribution.py`, and `validate_dataset.py`.
+`docs/FILE_GUIDE.md` explains every output file in plain language and lists a separate command for each step. The step scripts are `download_noiserbench.py`, `audit_noiserbench.py`, `inspect_dataset.py`, `build_classification_set.py`, `analyze_class_distribution.py`, `validate_dataset.py`, and `plot_original_datasets.py`.
+
+The raw and cleaned length charts look almost the same because both measure the one passage we kept. Only 4 of 500 supportive passages changed between those two charts. Plots of every stored original passage are written by `python scripts/plot_original_datasets.py` into `outputs/plots/original/`.
 
 ## Next decision
 
