@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "n_pairs": 4000,
+  "n_parents": 1000,
+  "n_questions": 1000,
+  "label_counts": {
+    "Relevant": 500,
+    "Semantic Noise": 500,
+    "Datatype Noise": 500,
+    "Illegal-Sentence Noise": 500,
+    "Counterfactual Noise": 500,
+    "Supportive Noise": 500,
+    "Orthographic Noise": 500,
+    "Prior Noise": 500
+  },
+  "parent_leaks": [],
+  "n_parent_leaks": 0,
+  "question_leaks": [],
+  "n_question_leaks": 0,
+  "n_normalized_passages_shared_across_splits": 49,
+  "n_titles_shared_across_splits": 82,
+  "errors": [],
+  "passage_overlap_is_reported_not_failed": true
+}

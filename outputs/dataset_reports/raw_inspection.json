@@ -1,0 +1,1142 @@
+{
+  "raw_dir": "/workspace/data/raw/noiserbench",
+  "missing_files": [],
+  "files": {
+    "nq": {
+      "source": "nq",
+      "path": "/workspace/data/raw/noiserbench/single-hop/nq.json",
+      "n_records": 807,
+      "n_unique_questions_normalized": 807,
+      "n_duplicate_normalized_questions": 0,
+      "n_punctuation_near_duplicate_questions": 0,
+      "n_unique_passage_titles": 4846,
+      "fields": [
+        "counterfactual answer",
+        "counterfactual answer2",
+        "counterfactual noise",
+        "counterfactual noise2",
+        "datatype noise",
+        "gold_answers",
+        "gold_text",
+        "id",
+        "illegal sentence noise",
+        "orthographic noise",
+        "question",
+        "semantic noise",
+        "supportive noise"
+      ],
+      "field_presence_counts": {
+        "id": 807,
+        "question": 807,
+        "gold_answers": 807,
+        "gold_text": 807,
+        "counterfactual answer": 807,
+        "counterfactual answer2": 807,
+        "counterfactual noise": 807,
+        "counterfactual noise2": 807,
+        "supportive noise": 807,
+        "orthographic noise": 807,
+        "semantic noise": 807,
+        "datatype noise": 807,
+        "illegal sentence noise": 807
+      },
+      "field_types": {
+        "counterfactual answer": {
+          "str": 807
+        },
+        "counterfactual answer2": {
+          "str": 807
+        },
+        "counterfactual noise": {
+          "str": 807
+        },
+        "counterfactual noise2": {
+          "str": 807
+        },
+        "datatype noise": {
+          "list": 807
+        },
+        "gold_answers": {
+          "list": 807
+        },
+        "gold_text": {
+          "str": 807
+        },
+        "id": {
+          "int": 807
+        },
+        "illegal sentence noise": {
+          "list": 807
+        },
+        "orthographic noise": {
+          "dict": 807
+        },
+        "question": {
+          "str": 807
+        },
+        "semantic noise": {
+          "list": 807
+        },
+        "supportive noise": {
+          "list": 807
+        }
+      },
+      "null_counts": {},
+      "empty_questions": 0,
+      "empty_gold_text": 0,
+      "empty_gold_answers": 0,
+      "gold_answer_python_types": {
+        "str": 1135
+      },
+      "records_without_label_field": 807,
+      "records_with_split_field": 0,
+      "id_summary": {
+        "count": 807,
+        "unique": 807,
+        "min": 0,
+        "max": 806,
+        "is_contiguous_from_zero": true
+      },
+      "question_char_length": {
+        "count": 807,
+        "min": 30,
+        "max": 97,
+        "mean": 48.172,
+        "median": 46,
+        "stdev": 10.092
+      },
+      "answer_char_length": {
+        "count": 1135,
+        "min": 1,
+        "max": 52,
+        "mean": 14.641,
+        "median": 14,
+        "stdev": 7.877
+      },
+      "stored_passage_char_length": {
+        "count": 36969,
+        "min": 18,
+        "max": 2035,
+        "mean": 457.603,
+        "median": 562,
+        "stdev": 225.052
+      },
+      "stored_passage_whitespace_tokens": {
+        "count": 36969,
+        "min": 3,
+        "max": 332,
+        "mean": 75.072,
+        "median": 100,
+        "stdev": 36.698
+      },
+      "stored_passages_over_whitespace_tokens": {
+        "256": 53,
+        "384": 0,
+        "512": 0
+      },
+      "supporting_fact_annotations_present": false,
+      "note_on_sequence_length": "Thresholds count whitespace-separated tokens in stored passages. They are not WordPiece or RoBERTa tokenizer lengths. NoiserBench does not include HotpotQA supporting-fact lists.",
+      "expected_fields_for_eight_class_derivation": {
+        "Relevant": "gold_text",
+        "Semantic Noise": "semantic noise",
+        "Datatype Noise": "datatype noise",
+        "Illegal-Sentence Noise": "illegal sentence noise",
+        "Counterfactual Noise": "counterfactual noise",
+        "Supportive Noise": "supportive noise",
+        "Orthographic Noise": "orthographic noise",
+        "Prior Noise": "gold_text"
+      }
+    },
+    "rgb": {
+      "source": "rgb",
+      "path": "/workspace/data/raw/noiserbench/single-hop/rgb.json",
+      "n_records": 300,
+      "n_unique_questions_normalized": 300,
+      "n_duplicate_normalized_questions": 0,
+      "n_punctuation_near_duplicate_questions": 0,
+      "n_unique_passage_titles": 956,
+      "fields": [
+        "counterfactual answer",
+        "counterfactual answer2",
+        "counterfactual noise",
+        "counterfactual noise2",
+        "datatype noise",
+        "gold_answers",
+        "gold_text",
+        "id",
+        "illegal sentence noise",
+        "orthographic noise",
+        "question",
+        "semantic noise",
+        "supportive noise"
+      ],
+      "field_presence_counts": {
+        "id": 300,
+        "question": 300,
+        "gold_answers": 300,
+        "gold_text": 300,
+        "counterfactual answer": 300,
+        "counterfactual answer2": 300,
+        "counterfactual noise": 300,
+        "counterfactual noise2": 300,
+        "supportive noise": 300,
+        "orthographic noise": 300,
+        "semantic noise": 300,
+        "datatype noise": 300,
+        "illegal sentence noise": 300
+      },
+      "field_types": {
+        "counterfactual answer": {
+          "str": 300
+        },
+        "counterfactual answer2": {
+          "str": 300
+        },
+        "counterfactual noise": {
+          "str": 300
+        },
+        "counterfactual noise2": {
+          "str": 300
+        },
+        "datatype noise": {
+          "list": 300
+        },
+        "gold_answers": {
+          "list": 300
+        },
+        "gold_text": {
+          "str": 300
+        },
+        "id": {
+          "int": 300
+        },
+        "illegal sentence noise": {
+          "list": 300
+        },
+        "orthographic noise": {
+          "dict": 300
+        },
+        "question": {
+          "str": 300
+        },
+        "semantic noise": {
+          "list": 300
+        },
+        "supportive noise": {
+          "list": 300
+        }
+      },
+      "null_counts": {},
+      "empty_questions": 0,
+      "empty_gold_text": 0,
+      "empty_gold_answers": 0,
+      "gold_answer_python_types": {
+        "str": 739
+      },
+      "records_without_label_field": 300,
+      "records_with_split_field": 0,
+      "id_summary": {
+        "count": 300,
+        "unique": 300,
+        "min": 0,
+        "max": 299,
+        "is_contiguous_from_zero": true
+      },
+      "question_char_length": {
+        "count": 300,
+        "min": 18,
+        "max": 112,
+        "mean": 47.853,
+        "median": 45.0,
+        "stdev": 15.234
+      },
+      "answer_char_length": {
+        "count": 739,
+        "min": 1,
+        "max": 33,
+        "mean": 9.405,
+        "median": 8,
+        "stdev": 4.217
+      },
+      "stored_passage_char_length": {
+        "count": 11112,
+        "min": 1,
+        "max": 976,
+        "mean": 377.967,
+        "median": 361.0,
+        "stdev": 194.996
+      },
+      "stored_passage_whitespace_tokens": {
+        "count": 11112,
+        "min": 1,
+        "max": 163,
+        "mean": 60.524,
+        "median": 52.0,
+        "stdev": 31.829
+      },
+      "stored_passages_over_whitespace_tokens": {
+        "256": 0,
+        "384": 0,
+        "512": 0
+      },
+      "supporting_fact_annotations_present": false,
+      "note_on_sequence_length": "Thresholds count whitespace-separated tokens in stored passages. They are not WordPiece or RoBERTa tokenizer lengths. NoiserBench does not include HotpotQA supporting-fact lists.",
+      "expected_fields_for_eight_class_derivation": {
+        "Relevant": "gold_text",
+        "Semantic Noise": "semantic noise",
+        "Datatype Noise": "datatype noise",
+        "Illegal-Sentence Noise": "illegal sentence noise",
+        "Counterfactual Noise": "counterfactual noise",
+        "Supportive Noise": "supportive noise",
+        "Orthographic Noise": "orthographic noise",
+        "Prior Noise": "gold_text"
+      }
+    },
+    "hotpotqa": {
+      "source": "hotpotqa",
+      "path": "/workspace/data/raw/noiserbench/multi-hop/explicit/hotpotqa.json",
+      "n_records": 500,
+      "n_unique_questions_normalized": 500,
+      "n_duplicate_normalized_questions": 0,
+      "n_punctuation_near_duplicate_questions": 0,
+      "n_unique_passage_titles": 3939,
+      "fields": [
+        "counterfactual answer",
+        "counterfactual answer2",
+        "counterfactual noise",
+        "counterfactual noise2",
+        "datatype noise",
+        "gold_answers",
+        "gold_text",
+        "id",
+        "illegal sentence noise",
+        "orthographic noise",
+        "question",
+        "semantic noise",
+        "supportive noise"
+      ],
+      "field_presence_counts": {
+        "id": 500,
+        "question": 500,
+        "gold_answers": 500,
+        "gold_text": 500,
+        "counterfactual answer": 500,
+        "counterfactual answer2": 500,
+        "counterfactual noise": 500,
+        "counterfactual noise2": 500,
+        "supportive noise": 500,
+        "orthographic noise": 500,
+        "semantic noise": 500,
+        "datatype noise": 500,
+        "illegal sentence noise": 500
+      },
+      "field_types": {
+        "counterfactual answer": {
+          "str": 500
+        },
+        "counterfactual answer2": {
+          "str": 500
+        },
+        "counterfactual noise": {
+          "str": 500
+        },
+        "counterfactual noise2": {
+          "str": 500
+        },
+        "datatype noise": {
+          "list": 500
+        },
+        "gold_answers": {
+          "list": 500
+        },
+        "gold_text": {
+          "str": 500
+        },
+        "id": {
+          "int": 500
+        },
+        "illegal sentence noise": {
+          "list": 500
+        },
+        "orthographic noise": {
+          "dict": 500
+        },
+        "question": {
+          "str": 500
+        },
+        "semantic noise": {
+          "list": 500
+        },
+        "supportive noise": {
+          "list": 500
+        }
+      },
+      "null_counts": {},
+      "empty_questions": 0,
+      "empty_gold_text": 0,
+      "empty_gold_answers": 0,
+      "gold_answer_python_types": {
+        "str": 500
+      },
+      "records_without_label_field": 500,
+      "records_with_split_field": 0,
+      "id_summary": {
+        "count": 500,
+        "unique": 500,
+        "min": 0,
+        "max": 499,
+        "is_contiguous_from_zero": true
+      },
+      "question_char_length": {
+        "count": 500,
+        "min": 41,
+        "max": 223,
+        "mean": 105.41,
+        "median": 99.5,
+        "stdev": 34.034
+      },
+      "answer_char_length": {
+        "count": 500,
+        "min": 2,
+        "max": 104,
+        "mean": 19.61,
+        "median": 16.0,
+        "stdev": 15.252
+      },
+      "stored_passage_char_length": {
+        "count": 21989,
+        "min": 60,
+        "max": 6353,
+        "mean": 554.553,
+        "median": 593,
+        "stdev": 317.875
+      },
+      "stored_passage_whitespace_tokens": {
+        "count": 21989,
+        "min": 9,
+        "max": 1000,
+        "mean": 85.683,
+        "median": 100,
+        "stdev": 45.747
+      },
+      "stored_passages_over_whitespace_tokens": {
+        "256": 97,
+        "384": 9,
+        "512": 3
+      },
+      "supporting_fact_annotations_present": false,
+      "note_on_sequence_length": "Thresholds count whitespace-separated tokens in stored passages. They are not WordPiece or RoBERTa tokenizer lengths. NoiserBench does not include HotpotQA supporting-fact lists.",
+      "expected_fields_for_eight_class_derivation": {
+        "Relevant": "gold_text",
+        "Semantic Noise": "semantic noise",
+        "Datatype Noise": "datatype noise",
+        "Illegal-Sentence Noise": "illegal sentence noise",
+        "Counterfactual Noise": "counterfactual noise",
+        "Supportive Noise": "supportive noise",
+        "Orthographic Noise": "orthographic noise",
+        "Prior Noise": "gold_text"
+      }
+    },
+    "2wikimqa": {
+      "source": "2wikimqa",
+      "path": "/workspace/data/raw/noiserbench/multi-hop/explicit/2wikimqa.json",
+      "n_records": 500,
+      "n_unique_questions_normalized": 494,
+      "n_duplicate_normalized_questions": 6,
+      "n_punctuation_near_duplicate_questions": 0,
+      "n_unique_passage_titles": 3463,
+      "fields": [
+        "counterfactual answer",
+        "counterfactual answer2",
+        "counterfactual noise",
+        "counterfactual noise2",
+        "datatype noise",
+        "gold_answers",
+        "gold_text",
+        "id",
+        "illegal sentence noise",
+        "orthographic noise",
+        "question",
+        "semantic noise",
+        "supportive noise"
+      ],
+      "field_presence_counts": {
+        "id": 500,
+        "question": 500,
+        "gold_answers": 500,
+        "gold_text": 500,
+        "counterfactual answer": 500,
+        "counterfactual answer2": 500,
+        "counterfactual noise": 500,
+        "counterfactual noise2": 500,
+        "supportive noise": 500,
+        "orthographic noise": 500,
+        "semantic noise": 500,
+        "datatype noise": 500,
+        "illegal sentence noise": 500
+      },
+      "field_types": {
+        "counterfactual answer": {
+          "str": 500
+        },
+        "counterfactual answer2": {
+          "str": 500
+        },
+        "counterfactual noise": {
+          "str": 500
+        },
+        "counterfactual noise2": {
+          "str": 500
+        },
+        "datatype noise": {
+          "list": 500
+        },
+        "gold_answers": {
+          "list": 500
+        },
+        "gold_text": {
+          "str": 500
+        },
+        "id": {
+          "int": 500
+        },
+        "illegal sentence noise": {
+          "list": 500
+        },
+        "orthographic noise": {
+          "dict": 500
+        },
+        "question": {
+          "str": 500
+        },
+        "semantic noise": {
+          "list": 500
+        },
+        "supportive noise": {
+          "list": 500
+        }
+      },
+      "null_counts": {},
+      "empty_questions": 0,
+      "empty_gold_text": 0,
+      "empty_gold_answers": 0,
+      "gold_answer_python_types": {
+        "str": 500
+      },
+      "records_without_label_field": 500,
+      "records_with_split_field": 0,
+      "id_summary": {
+        "count": 500,
+        "unique": 500,
+        "min": 0,
+        "max": 499,
+        "is_contiguous_from_zero": true
+      },
+      "question_char_length": {
+        "count": 500,
+        "min": 34,
+        "max": 126,
+        "mean": 62.046,
+        "median": 61.0,
+        "stdev": 13.395
+      },
+      "answer_char_length": {
+        "count": 500,
+        "min": 2,
+        "max": 51,
+        "mean": 14.58,
+        "median": 13.0,
+        "stdev": 8.431
+      },
+      "stored_passage_char_length": {
+        "count": 21969,
+        "min": 29,
+        "max": 2933,
+        "mean": 407.57,
+        "median": 415,
+        "stdev": 212.771
+      },
+      "stored_passage_whitespace_tokens": {
+        "count": 21969,
+        "min": 1,
+        "max": 494,
+        "mean": 66.969,
+        "median": 62,
+        "stdev": 35.147
+      },
+      "stored_passages_over_whitespace_tokens": {
+        "256": 69,
+        "384": 13,
+        "512": 0
+      },
+      "supporting_fact_annotations_present": false,
+      "note_on_sequence_length": "Thresholds count whitespace-separated tokens in stored passages. They are not WordPiece or RoBERTa tokenizer lengths. NoiserBench does not include HotpotQA supporting-fact lists.",
+      "expected_fields_for_eight_class_derivation": {
+        "Relevant": "gold_text",
+        "Semantic Noise": "semantic noise",
+        "Datatype Noise": "datatype noise",
+        "Illegal-Sentence Noise": "illegal sentence noise",
+        "Counterfactual Noise": "counterfactual noise",
+        "Supportive Noise": "supportive noise",
+        "Orthographic Noise": "orthographic noise",
+        "Prior Noise": "gold_text"
+      }
+    },
+    "bamboogle": {
+      "source": "bamboogle",
+      "path": "/workspace/data/raw/noiserbench/multi-hop/explicit/bamboogle.json",
+      "n_records": 125,
+      "n_unique_questions_normalized": 125,
+      "n_duplicate_normalized_questions": 0,
+      "n_punctuation_near_duplicate_questions": 0,
+      "n_unique_passage_titles": 873,
+      "fields": [
+        "counterfactual answer",
+        "counterfactual answer2",
+        "counterfactual noise",
+        "counterfactual noise2",
+        "datatype noise",
+        "gold_answers",
+        "gold_text",
+        "id",
+        "illegal sentence noise",
+        "orthographic noise",
+        "question",
+        "semantic noise",
+        "supportive noise"
+      ],
+      "field_presence_counts": {
+        "id": 125,
+        "question": 125,
+        "gold_answers": 125,
+        "gold_text": 125,
+        "counterfactual answer": 125,
+        "counterfactual answer2": 125,
+        "counterfactual noise": 125,
+        "counterfactual noise2": 125,
+        "supportive noise": 125,
+        "orthographic noise": 125,
+        "semantic noise": 125,
+        "datatype noise": 125,
+        "illegal sentence noise": 125
+      },
+      "field_types": {
+        "counterfactual answer": {
+          "str": 125
+        },
+        "counterfactual answer2": {
+          "str": 125
+        },
+        "counterfactual noise": {
+          "str": 125
+        },
+        "counterfactual noise2": {
+          "str": 125
+        },
+        "datatype noise": {
+          "list": 125
+        },
+        "gold_answers": {
+          "list": 125
+        },
+        "gold_text": {
+          "str": 125
+        },
+        "id": {
+          "int": 125
+        },
+        "illegal sentence noise": {
+          "list": 125
+        },
+        "orthographic noise": {
+          "dict": 125
+        },
+        "question": {
+          "str": 125
+        },
+        "semantic noise": {
+          "list": 125
+        },
+        "supportive noise": {
+          "list": 125
+        }
+      },
+      "null_counts": {},
+      "empty_questions": 0,
+      "empty_gold_text": 0,
+      "empty_gold_answers": 0,
+      "gold_answer_python_types": {
+        "str": 125
+      },
+      "records_without_label_field": 125,
+      "records_with_split_field": 0,
+      "id_summary": {
+        "count": 125,
+        "unique": 125,
+        "min": 0,
+        "max": 124,
+        "is_contiguous_from_zero": true
+      },
+      "question_char_length": {
+        "count": 125,
+        "min": 39,
+        "max": 131,
+        "mean": 65.8,
+        "median": 63,
+        "stdev": 15.139
+      },
+      "answer_char_length": {
+        "count": 125,
+        "min": 1,
+        "max": 60,
+        "mean": 12.096,
+        "median": 12,
+        "stdev": 7.184
+      },
+      "stored_passage_char_length": {
+        "count": 5490,
+        "min": 98,
+        "max": 921,
+        "mean": 380.197,
+        "median": 253.0,
+        "stdev": 214.656
+      },
+      "stored_passage_whitespace_tokens": {
+        "count": 5490,
+        "min": 6,
+        "max": 129,
+        "mean": 62.268,
+        "median": 39.0,
+        "stdev": 34.795
+      },
+      "stored_passages_over_whitespace_tokens": {
+        "256": 0,
+        "384": 0,
+        "512": 0
+      },
+      "supporting_fact_annotations_present": false,
+      "note_on_sequence_length": "Thresholds count whitespace-separated tokens in stored passages. They are not WordPiece or RoBERTa tokenizer lengths. NoiserBench does not include HotpotQA supporting-fact lists.",
+      "expected_fields_for_eight_class_derivation": {
+        "Relevant": "gold_text",
+        "Semantic Noise": "semantic noise",
+        "Datatype Noise": "datatype noise",
+        "Illegal-Sentence Noise": "illegal sentence noise",
+        "Counterfactual Noise": "counterfactual noise",
+        "Supportive Noise": "supportive noise",
+        "Orthographic Noise": "orthographic noise",
+        "Prior Noise": "gold_text"
+      }
+    },
+    "strategyqa": {
+      "source": "strategyqa",
+      "path": "/workspace/data/raw/noiserbench/multi-hop/implicit/strategyqa.json",
+      "n_records": 500,
+      "n_unique_questions_normalized": 500,
+      "n_duplicate_normalized_questions": 0,
+      "n_punctuation_near_duplicate_questions": 0,
+      "n_unique_passage_titles": 3950,
+      "fields": [
+        "counterfactual answer",
+        "counterfactual noise",
+        "datatype noise",
+        "gold_answers",
+        "gold_text",
+        "id",
+        "illegal sentence noise",
+        "orthographic noise",
+        "question",
+        "semantic noise",
+        "supportive noise"
+      ],
+      "field_presence_counts": {
+        "id": 500,
+        "question": 500,
+        "gold_answers": 500,
+        "gold_text": 500,
+        "counterfactual answer": 500,
+        "counterfactual noise": 500,
+        "supportive noise": 500,
+        "orthographic noise": 500,
+        "semantic noise": 500,
+        "datatype noise": 500,
+        "illegal sentence noise": 500
+      },
+      "field_types": {
+        "counterfactual answer": {
+          "bool": 500
+        },
+        "counterfactual noise": {
+          "str": 500
+        },
+        "datatype noise": {
+          "list": 500
+        },
+        "gold_answers": {
+          "list": 500
+        },
+        "gold_text": {
+          "str": 500
+        },
+        "id": {
+          "int": 500
+        },
+        "illegal sentence noise": {
+          "list": 500
+        },
+        "orthographic noise": {
+          "dict": 500
+        },
+        "question": {
+          "str": 500
+        },
+        "semantic noise": {
+          "list": 500
+        },
+        "supportive noise": {
+          "list": 500
+        }
+      },
+      "null_counts": {},
+      "empty_questions": 0,
+      "empty_gold_text": 0,
+      "empty_gold_answers": 0,
+      "gold_answer_python_types": {
+        "bool": 500
+      },
+      "records_without_label_field": 500,
+      "records_with_split_field": 0,
+      "id_summary": {
+        "count": 500,
+        "unique": 500,
+        "min": 0,
+        "max": 499,
+        "is_contiguous_from_zero": true
+      },
+      "question_char_length": {
+        "count": 500,
+        "min": 19,
+        "max": 105,
+        "mean": 56.546,
+        "median": 56.0,
+        "stdev": 15.077
+      },
+      "answer_char_length": {
+        "count": 500,
+        "min": 4,
+        "max": 5,
+        "mean": 4.528,
+        "median": 5.0,
+        "stdev": 0.499
+      },
+      "stored_passage_char_length": {
+        "count": 21500,
+        "min": 43,
+        "max": 904,
+        "mean": 382.574,
+        "median": 296.0,
+        "stdev": 224.14
+      },
+      "stored_passage_whitespace_tokens": {
+        "count": 21500,
+        "min": 2,
+        "max": 140,
+        "mean": 61.646,
+        "median": 44.0,
+        "stdev": 36.658
+      },
+      "stored_passages_over_whitespace_tokens": {
+        "256": 0,
+        "384": 0,
+        "512": 0
+      },
+      "supporting_fact_annotations_present": false,
+      "note_on_sequence_length": "Thresholds count whitespace-separated tokens in stored passages. They are not WordPiece or RoBERTa tokenizer lengths. NoiserBench does not include HotpotQA supporting-fact lists.",
+      "expected_fields_for_eight_class_derivation": {
+        "Relevant": "gold_text",
+        "Semantic Noise": "semantic noise",
+        "Datatype Noise": "datatype noise",
+        "Illegal-Sentence Noise": "illegal sentence noise",
+        "Counterfactual Noise": "counterfactual noise",
+        "Supportive Noise": "supportive noise",
+        "Orthographic Noise": "orthographic noise",
+        "Prior Noise": "gold_text"
+      }
+    },
+    "tempqa": {
+      "source": "tempqa",
+      "path": "/workspace/data/raw/noiserbench/multi-hop/implicit/tempqa.json",
+      "n_records": 186,
+      "n_unique_questions_normalized": 186,
+      "n_duplicate_normalized_questions": 0,
+      "n_punctuation_near_duplicate_questions": 0,
+      "n_unique_passage_titles": 1021,
+      "fields": [
+        "counterfactual answer",
+        "counterfactual answer2",
+        "counterfactual noise",
+        "counterfactual noise2",
+        "datatype noise",
+        "gold_answers",
+        "gold_text",
+        "id",
+        "illegal sentence noise",
+        "orthographic noise",
+        "question",
+        "semantic noise",
+        "supportive noise"
+      ],
+      "field_presence_counts": {
+        "id": 186,
+        "question": 186,
+        "gold_answers": 186,
+        "gold_text": 186,
+        "counterfactual answer": 186,
+        "counterfactual answer2": 186,
+        "counterfactual noise": 186,
+        "counterfactual noise2": 186,
+        "supportive noise": 186,
+        "orthographic noise": 186,
+        "semantic noise": 186,
+        "datatype noise": 186,
+        "illegal sentence noise": 186
+      },
+      "field_types": {
+        "counterfactual answer": {
+          "str": 186
+        },
+        "counterfactual answer2": {
+          "str": 186
+        },
+        "counterfactual noise": {
+          "str": 186
+        },
+        "counterfactual noise2": {
+          "str": 186
+        },
+        "datatype noise": {
+          "list": 186
+        },
+        "gold_answers": {
+          "list": 186
+        },
+        "gold_text": {
+          "str": 186
+        },
+        "id": {
+          "int": 186
+        },
+        "illegal sentence noise": {
+          "list": 186
+        },
+        "orthographic noise": {
+          "dict": 186
+        },
+        "question": {
+          "str": 186
+        },
+        "semantic noise": {
+          "list": 186
+        },
+        "supportive noise": {
+          "list": 186
+        }
+      },
+      "null_counts": {},
+      "empty_questions": 0,
+      "empty_gold_text": 0,
+      "empty_gold_answers": 0,
+      "gold_answer_python_types": {
+        "str": 199
+      },
+      "records_without_label_field": 186,
+      "records_with_split_field": 0,
+      "id_summary": {
+        "count": 186,
+        "unique": 186,
+        "min": 0,
+        "max": 185,
+        "is_contiguous_from_zero": true
+      },
+      "question_char_length": {
+        "count": 186,
+        "min": 32,
+        "max": 92,
+        "mean": 55.457,
+        "median": 56.0,
+        "stdev": 10.981
+      },
+      "answer_char_length": {
+        "count": 199,
+        "min": 1,
+        "max": 58,
+        "mean": 15.492,
+        "median": 15,
+        "stdev": 6.768
+      },
+      "stored_passage_char_length": {
+        "count": 8174,
+        "min": 19,
+        "max": 775,
+        "mean": 398.522,
+        "median": 313.0,
+        "stdev": 199.498
+      },
+      "stored_passage_whitespace_tokens": {
+        "count": 8174,
+        "min": 4,
+        "max": 121,
+        "mean": 64.666,
+        "median": 48.0,
+        "stdev": 33.079
+      },
+      "stored_passages_over_whitespace_tokens": {
+        "256": 0,
+        "384": 0,
+        "512": 0
+      },
+      "supporting_fact_annotations_present": false,
+      "note_on_sequence_length": "Thresholds count whitespace-separated tokens in stored passages. They are not WordPiece or RoBERTa tokenizer lengths. NoiserBench does not include HotpotQA supporting-fact lists.",
+      "expected_fields_for_eight_class_derivation": {
+        "Relevant": "gold_text",
+        "Semantic Noise": "semantic noise",
+        "Datatype Noise": "datatype noise",
+        "Illegal-Sentence Noise": "illegal sentence noise",
+        "Counterfactual Noise": "counterfactual noise",
+        "Supportive Noise": "supportive noise",
+        "Orthographic Noise": "orthographic noise",
+        "Prior Noise": "gold_text"
+      }
+    },
+    "priorqa": {
+      "source": "priorqa",
+      "path": "/workspace/data/raw/noiserbench/mix-hop/priorqa.json",
+      "n_records": 500,
+      "n_unique_questions_normalized": 500,
+      "n_duplicate_normalized_questions": 0,
+      "n_punctuation_near_duplicate_questions": 0,
+      "n_unique_passage_titles": 0,
+      "fields": [
+        "background",
+        "counterfactual answer",
+        "counterfactual answer2",
+        "counterfactual noise",
+        "counterfactual noise2",
+        "gold_answers",
+        "gold_text",
+        "id",
+        "keywords",
+        "question"
+      ],
+      "field_presence_counts": {
+        "id": 500,
+        "question": 500,
+        "keywords": 500,
+        "gold_answers": 500,
+        "gold_text": 500,
+        "background": 500,
+        "counterfactual answer": 500,
+        "counterfactual answer2": 500,
+        "counterfactual noise": 500,
+        "counterfactual noise2": 500
+      },
+      "field_types": {
+        "background": {
+          "dict": 500
+        },
+        "counterfactual answer": {
+          "str": 500
+        },
+        "counterfactual answer2": {
+          "str": 500
+        },
+        "counterfactual noise": {
+          "str": 500
+        },
+        "counterfactual noise2": {
+          "str": 500
+        },
+        "gold_answers": {
+          "list": 500
+        },
+        "gold_text": {
+          "str": 500
+        },
+        "id": {
+          "int": 500
+        },
+        "keywords": {
+          "list": 500
+        },
+        "question": {
+          "str": 500
+        }
+      },
+      "null_counts": {},
+      "empty_questions": 0,
+      "empty_gold_text": 0,
+      "empty_gold_answers": 0,
+      "gold_answer_python_types": {
+        "str": 500
+      },
+      "records_without_label_field": 500,
+      "records_with_split_field": 0,
+      "id_summary": {
+        "count": 500,
+        "unique": 500,
+        "min": 0,
+        "max": 499,
+        "is_contiguous_from_zero": true
+      },
+      "question_char_length": {
+        "count": 500,
+        "min": 29,
+        "max": 150,
+        "mean": 79.35,
+        "median": 77.0,
+        "stdev": 19.994
+      },
+      "answer_char_length": {
+        "count": 500,
+        "min": 35,
+        "max": 35,
+        "mean": 35.0,
+        "median": 35.0,
+        "stdev": 0.0
+      },
+      "stored_passage_char_length": {
+        "count": 1500,
+        "min": 92,
+        "max": 397,
+        "mean": 261.005,
+        "median": 270.0,
+        "stdev": 56.323
+      },
+      "stored_passage_whitespace_tokens": {
+        "count": 1500,
+        "min": 18,
+        "max": 60,
+        "mean": 38.33,
+        "median": 39.0,
+        "stdev": 6.585
+      },
+      "stored_passages_over_whitespace_tokens": {
+        "256": 0,
+        "384": 0,
+        "512": 0
+      },
+      "supporting_fact_annotations_present": false,
+      "note_on_sequence_length": "Thresholds count whitespace-separated tokens in stored passages. They are not WordPiece or RoBERTa tokenizer lengths. NoiserBench does not include HotpotQA supporting-fact lists.",
+      "expected_fields_for_eight_class_derivation": {
+        "Relevant": "gold_text",
+        "Semantic Noise": "semantic noise",
+        "Datatype Noise": "datatype noise",
+        "Illegal-Sentence Noise": "illegal sentence noise",
+        "Counterfactual Noise": "counterfactual noise",
+        "Supportive Noise": "supportive noise",
+        "Orthographic Noise": "orthographic noise",
+        "Prior Noise": "gold_text"
+      }
+    }
+  },
+  "total_records": 3418
+}

@@ -1,0 +1,49 @@
+{
+  "hotpotqa_records": 500,
+  "priorqa_records": 500,
+  "hotpotqa_stored_counts": {
+    "Relevant": 500,
+    "Semantic Noise": 5000,
+    "Datatype Noise": 500,
+    "Illegal-Sentence Noise": 5000,
+    "Counterfactual Noise": 1000,
+    "Supportive Noise": 4989,
+    "Orthographic Noise": 5000
+  },
+  "hotpotqa_kept_counts": {
+    "Relevant": 500,
+    "Semantic Noise": 500,
+    "Datatype Noise": 500,
+    "Illegal-Sentence Noise": 500,
+    "Counterfactual Noise": 500,
+    "Supportive Noise": 500,
+    "Orthographic Noise": 500
+  },
+  "priorqa_stored_counts": {
+    "Prior gold_text (kept)": 500,
+    "counterfactual noise (not kept)": 500,
+    "counterfactual noise2 (not kept)": 500,
+    "background notes (not a class)": 1450
+  },
+  "orthographic_ratio_counts": {
+    "0.01": 500,
+    "0.05": 500,
+    "0.1": 500,
+    "0.2": 500,
+    "0.3": 500,
+    "0.4": 500,
+    "0.5": 500,
+    "0.6": 500,
+    "0.7": 500,
+    "0.8": 500
+  },
+  "plots": [
+    "outputs/plots/original/hotpotqa_stored_counts.png",
+    "outputs/plots/original/hotpotqa_stored_vs_kept_counts.png",
+    "outputs/plots/original/hotpotqa_stored_vs_kept_lengths.png",
+    "outputs/plots/original/hotpotqa_orthographic_ratio_counts.png",
+    "outputs/plots/original/hotpotqa_orthographic_ratio_lengths.png",
+    "outputs/plots/original/priorqa_stored_counts.png",
+    "outputs/plots/original/priorqa_field_lengths.png"
+  ]
+}

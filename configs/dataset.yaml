@@ -1,0 +1,12 @@
+seed: 42
+split_ratios: [0.8, 0.1, 0.1]
+min_test_per_class: 30
+orthographic_ratio: "0.2"
+initial_sources: [hotpotqa, priorqa]
+passage_sources: [nq, rgb, hotpotqa, 2wikimqa, bamboogle, strategyqa, tempqa]
+prior_source: priorqa
+noiserbench_commit: 447bee38d91996615ecc85c4da4a5b204f6c9837
+raw_dirname: data/raw/noiserbench
+manual_sample_parents: 20
+manual_sample_prior_parents: 5
+expected_prior_answer: "The question is factually incorrect"

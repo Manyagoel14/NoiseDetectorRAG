@@ -1,0 +1,210 @@
+{
+  "sources_used": [
+    "hotpotqa",
+    "priorqa"
+  ],
+  "notes": [
+    "Every class has at least 30 test pairs under the [0.8, 0.1, 0.1] parent-question split."
+  ],
+  "seed": 42,
+  "split_ratios": [
+    0.8,
+    0.1,
+    0.1
+  ],
+  "orthographic_ratio": "0.2",
+  "noiserbench_commit": "447bee38d91996615ecc85c4da4a5b204f6c9837",
+  "per_source_records": {
+    "hotpotqa": 500,
+    "priorqa": 500
+  },
+  "inventory_counts": {
+    "Relevant": 500,
+    "Semantic Noise": 5000,
+    "Datatype Noise": 500,
+    "Illegal-Sentence Noise": 5000,
+    "Counterfactual Noise": 1000,
+    "Supportive Noise": 4989,
+    "Orthographic Noise": 5000,
+    "Prior Noise": 500
+  },
+  "candidate_counts": {
+    "Relevant": 500,
+    "Semantic Noise": 500,
+    "Datatype Noise": 500,
+    "Illegal-Sentence Noise": 500,
+    "Counterfactual Noise": 500,
+    "Supportive Noise": 500,
+    "Orthographic Noise": 500,
+    "Prior Noise": 500
+  },
+  "cleaned_counts": {
+    "Relevant": 500,
+    "Semantic Noise": 500,
+    "Datatype Noise": 500,
+    "Illegal-Sentence Noise": 500,
+    "Counterfactual Noise": 500,
+    "Supportive Noise": 500,
+    "Orthographic Noise": 500,
+    "Prior Noise": 500
+  },
+  "exclusion_reason_counts": {},
+  "n_exclusions": 0,
+  "policy_holdout_counts": {
+    "counterfactual_noise2": 500,
+    "orthographic_ratio_0.01": 500,
+    "orthographic_ratio_0.05": 500,
+    "orthographic_ratio_0.1": 500,
+    "orthographic_ratio_0.3": 500,
+    "orthographic_ratio_0.4": 500,
+    "orthographic_ratio_0.5": 500,
+    "orthographic_ratio_0.6": 500,
+    "orthographic_ratio_0.7": 500,
+    "orthographic_ratio_0.8": 500,
+    "priorqa_counterfactual_noise": 500,
+    "priorqa_counterfactual_noise2": 500
+  },
+  "imbalance_inventory": {
+    "majority_count": 5000,
+    "minority_count": 500,
+    "majority_to_minority": 10.0,
+    "majority_to_each_class": {
+      "Relevant": 10.0,
+      "Semantic Noise": 1.0,
+      "Datatype Noise": 10.0,
+      "Illegal-Sentence Noise": 1.0,
+      "Counterfactual Noise": 5.0,
+      "Supportive Noise": 1.0022,
+      "Orthographic Noise": 1.0,
+      "Prior Noise": 10.0
+    }
+  },
+  "imbalance_candidate": {
+    "majority_count": 500,
+    "minority_count": 500,
+    "majority_to_minority": 1.0,
+    "majority_to_each_class": {
+      "Relevant": 1.0,
+      "Semantic Noise": 1.0,
+      "Datatype Noise": 1.0,
+      "Illegal-Sentence Noise": 1.0,
+      "Counterfactual Noise": 1.0,
+      "Supportive Noise": 1.0,
+      "Orthographic Noise": 1.0,
+      "Prior Noise": 1.0
+    }
+  },
+  "imbalance_cleaned": {
+    "majority_count": 500,
+    "minority_count": 500,
+    "majority_to_minority": 1.0,
+    "majority_to_each_class": {
+      "Relevant": 1.0,
+      "Semantic Noise": 1.0,
+      "Datatype Noise": 1.0,
+      "Illegal-Sentence Noise": 1.0,
+      "Counterfactual Noise": 1.0,
+      "Supportive Noise": 1.0,
+      "Orthographic Noise": 1.0,
+      "Prior Noise": 1.0
+    }
+  },
+  "split": {
+    "seed": 42,
+    "ratios": [
+      0.8,
+      0.1,
+      0.1
+    ],
+    "n_question_groups": 1000,
+    "n_question_groups_covering_multiple_parents": 0,
+    "stratum_group_counts": {
+      "hotpotqa": {
+        "train": 400,
+        "validation": 50,
+        "test": 50
+      },
+      "priorqa": {
+        "train": 400,
+        "validation": 50,
+        "test": 50
+      }
+    },
+    "parent_counts": {
+      "train": 800,
+      "validation": 100,
+      "test": 100
+    },
+    "class_counts": {
+      "train": {
+        "Relevant": 400,
+        "Semantic Noise": 400,
+        "Datatype Noise": 400,
+        "Illegal-Sentence Noise": 400,
+        "Counterfactual Noise": 400,
+        "Supportive Noise": 400,
+        "Orthographic Noise": 400,
+        "Prior Noise": 400
+      },
+      "validation": {
+        "Relevant": 50,
+        "Semantic Noise": 50,
+        "Datatype Noise": 50,
+        "Illegal-Sentence Noise": 50,
+        "Counterfactual Noise": 50,
+        "Supportive Noise": 50,
+        "Orthographic Noise": 50,
+        "Prior Noise": 50
+      },
+      "test": {
+        "Relevant": 50,
+        "Semantic Noise": 50,
+        "Datatype Noise": 50,
+        "Illegal-Sentence Noise": 50,
+        "Counterfactual Noise": 50,
+        "Supportive Noise": 50,
+        "Orthographic Noise": 50,
+        "Prior Noise": 50
+      }
+    }
+  },
+  "qc": {
+    "relevant_pairs_without_gold_answer_string": 0,
+    "supportive_pairs_that_still_contain_gold_answer": 0,
+    "prior_pairs": 500,
+    "prior_pairs_whose_gold_answer_is_not_the_expected_phrase": 0,
+    "orthographic_similarity_to_gold": {
+      "count": 500,
+      "min": 0.014,
+      "max": 0.9939,
+      "mean": 0.5307,
+      "median": 0.551
+    },
+    "illegal_sentence_whitespace_tokens": {
+      "count": 500,
+      "min": 30,
+      "max": 30,
+      "mean": 30.0,
+      "median": 30.0
+    },
+    "n_parents_with_identical_text_under_two_labels": 0,
+    "identical_text_collisions_preview": []
+  },
+  "validation_ok": true,
+  "n_question_leaks": 0,
+  "n_parent_leaks": 0,
+  "n_normalized_passages_shared_across_splits": 49,
+  "n_titles_shared_across_splits": 82,
+  "manual_sample_rows": 145,
+  "manual_sample_hotpot_parents": 20,
+  "manual_sample_prior_parents": 5,
+  "plot_paths": [
+    "outputs/plots/class_counts_inventory.png",
+    "outputs/plots/class_counts_raw.png",
+    "outputs/plots/class_counts_cleaned.png",
+    "outputs/plots/class_proportions_cleaned.png",
+    "outputs/plots/class_counts_by_split.png",
+    "outputs/plots/length_by_class_raw.png",
+    "outputs/plots/length_by_class_cleaned.png"
+  ]
+}
